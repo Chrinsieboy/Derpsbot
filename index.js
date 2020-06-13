@@ -65,7 +65,7 @@ client.on("message", async message => {
  
         const args = message.content.slice(prefix.length).split(/ +/);
  
-        if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("WAT DOE JIJ NOU! !kick", message.author ,"Sike!");
+        if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply(`WAT DOE JIJ NOU! !kick ${message.author} Sike!`);
  
         if (!message.guild.me.hasPermission("KICK_MEMBERS")) return message.reply("Jammer dan. Je hebt geen perms!");
  
