@@ -6,7 +6,6 @@ client.login(process.env.token);
 
 const activities_list = [
     "met de derps!", 
-    "met de banknop",
     "op de derpsserver", 
     "?help"
     ]; // creates an arraylist containing phrases you want your bot to switch through.
@@ -40,7 +39,7 @@ client.on("message", async message => {
 
     if (command === `${prefix}help`) {
  
-        return message.channel.send("Hallo!\n\n?hallo - Hallo!\n?botinfo\n\nStaff commands\n?kick - kick iemand\n?ban - ban iemand");
+        return message.channel.send("Hallo!\n\nIedereen kan dit\n?hallo - Hallo!\n?botinfo\n\nStaff commands\n?kick - kick iemand\n?ban - ban iemand");
    
     }
    
@@ -66,19 +65,19 @@ client.on("message", async message => {
  
         const args = message.content.slice(prefix.length).split(/ +/);
  
-        if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("sorry jij kan dit niet");
+        if (!message.member.hasPermission("KICK_MEMBERS")) return message.reply("WAT DOE JIJ NOU! !kick", message.author ,"Sike!");
  
-        if (!message.guild.me.hasPermission("KICK_MEMBERS")) return message.reply("Geen perms");
+        if (!message.guild.me.hasPermission("KICK_MEMBERS")) return message.reply("Jammer dan. Je hebt geen perms!");
  
-        if (!args[1]) return message.reply("Geen gebruiker opgegeven.");
+        if (!args[1]) return message.reply("Geen gebruiker binnengekregen. Let je wel op in de wiskunde les?");
  
-        if (!args[2]) return message.reply("Gelieve een redenen op te geven.");
+        if (!args[2]) return message.reply("Wil je ook ff een reden op te geven.");
  
         var kickUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
  
         var reason = args.slice(2).join(" ");
  
-        if (!kickUser) return message.reply("Kan de gebruiker niet vinden.");
+        if (!kickUser) return message.reply("Kan de gebruiker niet vinden. Vervelend hè?");
  
         var embed = new discord.MessageEmbed()
             .setColor("#ff0000")
@@ -91,7 +90,7 @@ client.on("message", async message => {
  
         var embedPrompt = new discord.MessageEmbed()
             .setColor("GREEN")
-            .setAuthor("Gelieve te reageren binnen 30 sec.")
+            .setAuthor("Wil je ff binnen 30 sec reageren?")
             .setDescription(`Wil je ${kickUser} kicken?`);
  
  
@@ -141,19 +140,19 @@ client.on("message", async message => {
  
         const args = message.content.slice(prefix.length).split(/ +/);
  
-        if (!args[1]) return message.reply("Geen gebruiker opgegeven.");
+        if (!args[1]) return message.reply("Geen gebruiker binnengekregen. Let je wel op in de wiskunde les?");
  
-        if (!args[2]) return message.reply("Gelieve een redenen op te geven.");
+        if (!args[2]) return message.reply("Wil je ook ff een reden op te geven.");
  
-        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("sorry jij kan dit niet");
+        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("WAT DOE JIJ NOU! !ban", message.author ,"niet doen!");
  
-        if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("Geen perms");
+        if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("Jammer dan. Je hebt geen perms!");
  
         var banUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[1]));
  
         var reason = args.slice(2).join(" ");
  
-        if (!banUser) return message.reply("Kan de gebruiker niet vinden.");
+        if (!banUser) return message.reply("Kan de gebruiker niet vinden. Vervelend hè?");
  
         var embed = new discord.MessageEmbed()
             .setColor("#ff0000")
@@ -166,7 +165,7 @@ client.on("message", async message => {
  
         var embedPrompt = new discord.MessageEmbed()
             .setColor("GREEN")
-            .setAuthor("Gelieve te reageren binnen 30 sec.")
+            .setAuthor("Wil je ff binnen 30 sec reageren?")
             .setDescription(`Wil je ${banUser} bannen?`);
  
  
