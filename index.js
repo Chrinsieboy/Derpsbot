@@ -4,13 +4,19 @@ const botConfig = require("./botconfig.json");
 const client = new discord.Client();
 client.login(process.env.token);
 
+const activities_list = [
+    "met de derps!", 
+    "met de banknop",
+    "op de derpsserver", 
+    "?help"
+    ]; // creates an arraylist containing phrases you want your bot to switch through.
 
-client.on("ready", async () => {
- 
+client.on('ready', () => {
+    setInterval(() => {
+        const index = Math.floor(Math.random() * (activities_list.length - 1) + 1); // generates a random number between 1 and the length of the activities array list (in this case 5).
+        client.user.setActivity(activities_list[index]); // sets bot's activities to one of the phrases in the arraylist.
+    }, 10000); // Runs this every 10 seconds.
     console.log(`${client.user.username} is online.`);
-    
-    client.user.setActivity(`met de derps`, { type: "PLAYING" });
- 
 });
    
  
@@ -29,6 +35,12 @@ client.on("message", async message => {
     if (command === `${prefix}hallo`) {
  
         return message.channel.send("Hallo!!");
+   
+    }
+
+    if (command === `${prefix}help`) {
+ 
+        return message.channel.send("Hallo!\n\n?hallo - Hallo!\n?botinfo\n\nStaff commands\n?kick - kick iemand\n?ban - ban iemand");
    
     }
    
