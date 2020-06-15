@@ -69,24 +69,6 @@ client.on("message", async message => {
         return message.channel.send("Hallo!\n\nIedereen kan dit\n?hallo - Hallo!\n?botinfo\n\nStaff commands\n?kick - kick iemand\n?ban - ban iemand");
    
     }
-   
-    if (command === `${prefix}botinfo`) {
-        // Embed wat we gaan laten tonen.
-        var botEmbed = new discord.MessageEmbed()
-            .setTitle("Botinfo")
-            .setDescription("Hier zie je de info van de bot")
-            .setColor("#ff0000")
-            .addField("Naam bot", client.user.username)
-            .addField("Gemaakt op", client.user.createdAt)
-            .addField("Gemaakt door", "Chrinsieboyyy#3976")
-            .addField("ID:", client.user.id)
-
-            .setTimestamp()
-            .setFooter('© 2020 Derps bot. Alle Rechten Voorbehouden.');
- 
-        // Terug sturen van het bericht
-        return message.channel.send(botEmbed);
-    }
 
     if (command === `${prefix}kick`) {
  
