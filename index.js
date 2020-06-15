@@ -37,6 +37,48 @@ client.on("message", async message => {
    
     }
 
+    // Geef een gebruiker een rol nadat hij/zij is gejoind / Welkomsbericht
+
+bot.on("guildMemberAdd", member => {
+
+    const channel = member.guild.channels.find("name", "welkom");
+    if (!channel) console.log("Kan kanaal niet vinden");
+ 
+    var joinMessage = new discord.RichEmbed()
+       .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+       .setDescription(`Hoi ${member.user.username}, **Welkom in de server**, We wensen je een fijne tijd hier!`)
+       .setColor("#ff0000")
+       .setTimestamp()
+       .setFooter("© 2019 Bottie 2.0. Alle Rechten Voorbehouden.");
+ 
+    channel.send(joinMessage);
+ 
+    var role = member.guild.roles.find("name", "Member");
+ 
+    if (!role) return;
+ 
+    member.addRole(role);
+ 
+ });
+ 
+ // Vaarwelbericht
+ 
+ bot.on("guildMemberRemove", member => {
+ 
+    const channel = member.guild.channels.find("name", "welkom");
+    if (!channel) console.log("Kan kanaal niet vinden");
+ 
+    var joinMessage = new discord.RichEmbed()
+       .setAuthor(`${member.user.tag}`, member.user.displayAvatarURL)
+       .setDescription(`Tot ziens ${member.user.username}. Hopelijk zien we je snel weer terug!`)
+       .setColor("#ff0000")
+       .setTimestamp()
+       .setFooter("© 2019 Bottie 2.0. Alle Rechten Voorbehouden.");
+ 
+    channel.send(joinMessage);
+ 
+ });
+
     if (command === `${prefix}help`) {
  
         return message.channel.send("Hallo!\n\nIedereen kan dit\n?hallo - Hallo!\n?botinfo\n\nStaff commands\n?kick - kick iemand\n?ban - ban iemand");
@@ -144,7 +186,7 @@ client.on("message", async message => {
  
         if (!args[2]) return message.reply("Wil je ook ff een reden op te geven.");
  
-        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("WAT DOE JIJ NOU! ?ban", message.author ,"niet doen!");
+        if (!message.member.hasPermission("BAN_MEMBERS")) return message.reply("Nope! Dat gaan we ff moet doen!");
  
         if (!message.guild.me.hasPermission("BAN_MEMBERS")) return message.reply("Jammer dan. Je hebt geen perms!");
  
