@@ -41,7 +41,7 @@ client.on("message", async message => {
 
 bot.on("guildMemberAdd", member => {
 
-    const channel = member.guild.channels.find("name", "╹😃╻welkom");
+    const channel = member.guild.channels.find("name", "721347102113792125");
     if (!channel) console.log("Kan kanaal niet vinden");
  
     var joinMessage = new discord.RichEmbed()
@@ -65,7 +65,7 @@ bot.on("guildMemberAdd", member => {
  
  bot.on("guildMemberRemove", member => {
  
-    const channel = member.guild.channels.find("name", "╹😃╻welkom");
+    const channel = member.guild.channels.find("name", "721347102113792125");
     if (!channel) console.log("Kan kanaal niet vinden");
  
     var joinMessage = new discord.RichEmbed()
