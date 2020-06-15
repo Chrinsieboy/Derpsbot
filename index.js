@@ -39,7 +39,7 @@ client.on("message", async message => {
 
     // Geef een gebruiker een rol nadat hij/zij is gejoind / Welkomsbericht
 
-bot.on("guildMemberAdd", member => {
+client.on("guildMemberAdd", member => {
 
     const channel = member.guild.channels.find("name", "721347102113792125");
     if (!channel) console.log("Kan kanaal niet vinden");
@@ -63,7 +63,7 @@ bot.on("guildMemberAdd", member => {
  
  // Vaarwelbericht
  
- bot.on("guildMemberRemove", member => {
+ client.on("guildMemberRemove", member => {
  
     const channel = member.guild.channels.find("name", "721347102113792125");
     if (!channel) console.log("Kan kanaal niet vinden");
