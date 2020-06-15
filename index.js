@@ -41,7 +41,7 @@ client.on("message", async message => {
 
 bot.on("guildMemberAdd", member => {
 
-    const channel = member.guild.channels.find("name", "welkom");
+    const channel = member.guild.channels.find("name", "╹😃╻welkom");
     if (!channel) console.log("Kan kanaal niet vinden");
  
     var joinMessage = new discord.RichEmbed()
@@ -49,11 +49,11 @@ bot.on("guildMemberAdd", member => {
        .setDescription(`Hoi ${member.user.username}, **Welkom in de server**, We wensen je een fijne tijd hier!`)
        .setColor("#ff0000")
        .setTimestamp()
-       .setFooter("© 2019 Bottie 2.0. Alle Rechten Voorbehouden.");
+       .setFooter("© 2020 Derps bot. Alle Rechten Voorbehouden.");
  
     channel.send(joinMessage);
  
-    var role = member.guild.roles.find("name", "Member");
+    var role = member.guild.roles.find("name", "👤➨ Speler");
  
     if (!role) return;
  
@@ -65,7 +65,7 @@ bot.on("guildMemberAdd", member => {
  
  bot.on("guildMemberRemove", member => {
  
-    const channel = member.guild.channels.find("name", "welkom");
+    const channel = member.guild.channels.find("name", "╹😃╻welkom");
     if (!channel) console.log("Kan kanaal niet vinden");
  
     var joinMessage = new discord.RichEmbed()
@@ -73,8 +73,7 @@ bot.on("guildMemberAdd", member => {
        .setDescription(`Tot ziens ${member.user.username}. Hopelijk zien we je snel weer terug!`)
        .setColor("#ff0000")
        .setTimestamp()
-       .setFooter("© 2019 Bottie 2.0. Alle Rechten Voorbehouden.");
- 
+       .setFooter("© 2020 Derps bot. Alle Rechten Voorbehouden."); 
     channel.send(joinMessage);
  
  });
