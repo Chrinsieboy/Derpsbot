@@ -1,8 +1,33 @@
 const discord = require("discord.js");
 const botConfig = require("./botconfig.json");
  
+const fs = require("fs");
+ 
 const client = new discord.Client();
+client.commands = new discord.Collection();
 client.login(process.env.token);
+
+fs.readdir("./commands/", (err, files) => {
+
+    if(err) console.log(err);
+
+    var jsFiles = files.filter(f => f.split(".").pop() === "js");
+
+    if(jsFiles.length <= 0) {
+        console.log("Er zijn geen files of ze zijn niet te vinden.");
+        return;
+    }
+
+    jsFiles.forEach((f,i) => {
+
+        var fileGet = require(`./commands/${f}`);
+        console.log(`${f} is geladen`)
+
+        client.commands.set(fileGet.help.name, fileGet);
+
+    })
+
+});
 
 const activities_list = [
     "met de derps!", 
@@ -30,12 +55,14 @@ client.on("message", async message => {
     var messageArray = message.content.split(" ");
  
     var command = messageArray[0];
+
+    var arguments = messageArray.slice(1);
+
+
+    var commands = client.commands.get(command.slice(prefix.length));
+
+    if(commands) commands.run(client, message, arguments);
  
-    if (command === `${prefix}hallo`) {
- 
-        return message.channel.send("Hallo!!");
-   
-    }
 
     if (command === `${prefix}help`) {
  
