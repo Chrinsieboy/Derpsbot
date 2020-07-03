@@ -5,7 +5,7 @@ const fs = require("fs");
  
 const client = new discord.Client();
 client.commands = new discord.Collection();
-client.login(process.env.token);
+client.login(botConfig.token); //process.env.token
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -52,7 +52,7 @@ client.on("message", async message => {
  
     var prefix = botConfig.prefix;
  
-    var messageArray = message.content.split(" ");
+    var messageArray = message.content.split(" "); 
  
     var command = messageArray[0];
 
@@ -66,7 +66,7 @@ client.on("message", async message => {
 
     if (command === `${prefix}help`) {
  
-        return message.channel.send("Hallo!\n\nIedereen kan dit\n?hallo - Hallo!\n?botinfo\n\nStaff commands\n?kick - kick iemand\n?ban - ban iemand");
+        return message.channel.send("Hallo!\n\nIedereen kan dit\n?hallo - Hallo!\n?botinfo - Informatie over de bot\n\nStaff commands\n?kick - kick iemand\n?ban - ban iemand\n\n Hello!\n\n Everybody can see this\n?hello - Hello!\n?botinfo-en - Information about Bot\n\nStaff commands\n?kick - kick someone\n?ban - ban someone");
    
     }
 
@@ -238,6 +238,15 @@ async function promptMessage(message, author, time, reactions) {
     // Dan kunnen we bericht terug sturen met dat icoontje dat is aangeduid.
     return message.awaitReactions(filter, { max: 1, time: time }).then(collected => collected.first() && collected.first().emoji.name);
 }
+
+    if (command === `${prefix}status`) {{
+
+        console.log("hier is status command")
+
+        };
+
+}
+
 });
 
 // !avatar - Laat de profielfoto van een gebruiker zien.
